@@ -182,7 +182,3 @@ Mathematics_, 20:53--65, 1987.
 
 [2] An Hoang. **Exact Silhouette Score Maximization and Fast Manhattan
 Silhouette Evaluation**. Bachelor thesis, TU Braunschweig, 2026.
-
-## License
-
-A license should be added before the first public package release.
