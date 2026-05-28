@@ -123,9 +123,9 @@ filelock==3.29.0 \
     # via
     #   python-discovery
     #   virtualenv
-hypothesis==6.154.1 \
-    --hash=sha256:5956848819cada59aaecafd984d70e3577580e20f2fa6bfc202b0edb27dcecad \
-    --hash=sha256:61d7caf9837d18d1675f427bf6bb23c8d2e5f511e1bb795bd6f4ed495cb38893
+hypothesis==6.155.0 \
+    --hash=sha256:cf09ac913b60b49750585a53152704468de666f35c9c29f8e61d82a01f64bbb5 \
+    --hash=sha256:d6ffa3062afabaf908491be707c60843f6671f7c3e9f2ed249d5827207ebbf33
 identify==2.6.19 \
     --hash=sha256:20e6a87f786f768c092a721ad107fc9df0eb89347be9396cadf3f4abbd1fb78a \
     --hash=sha256:6be5020c38fcb07da56c53733538a3081ea5aa70d36a156f83044bfbf9173842
