@@ -142,7 +142,7 @@ More plots and the scripts that generated them are available in
 Install development dependencies:
 
 ```bash
-uv sync --all-extras --all-groups
+uv sync --all-groups
 ```
 
 Run tests:
@@ -176,9 +176,11 @@ Before opening a pull request, please run the test suite with `uv run pytest`.
 
 ## References
 
-[1] Peter J. Rousseeuw. **Silhouettes: A graphical aid to the interpretation and
-validation of cluster analysis**. _Journal of Computational and Applied
-Mathematics_, 20:53--65, 1987.
+[1] Rousseeuw, P. J. (1987). **Silhouettes: A graphical aid to the
+interpretation and validation of cluster analysis**. Journal of Computational
+and Applied Mathematics, 20, 53–65.
+<https://doi.org/10.1016/0377-0427(87)90125-7>
 
-[2] An Hoang. **Exact Silhouette Score Maximization and Fast Manhattan
-Silhouette Evaluation**. Bachelor thesis, TU Braunschweig, 2026.
+[2] Chen, Y., Debnath, T., Cai, A., & Song, M. (2023). **Circular Silhouette and
+a Fast Algorithm**. IEEE Transactions on Pattern Analysis and Machine
+Intelligence, 45(11), 14038–14044. <https://doi.org/10.1109/TPAMI.2023.3310495>
