@@ -1,0 +1,82 @@
+[project]
+name = "manhattan-silhouette"
+version = "0.1.0"
+description = "A faster algorithm to compute the Silhouette width under Manhattan distance"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+authors = [{ name = "An Hoang", email = "an.hoang.reverse417@slmail.me" }]
+
+keywords = [
+  "cluster-validation",
+  "clustering",
+  "l1-distance",
+  "machine-learning",
+  "manhattan-distance",
+  "numba",
+  "silhouette"
+]
+classifiers = [
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Typing :: Typed"
+]
+
+dependencies = [
+  "numba>=0.65.1",
+  "numpy>=2.4.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/anomatomato/manhattan-silhouette"
+Issues = "https://github.com/anomatomato/manhattan-silhouette/issues"
+# Documentation = "https://readthedocs.org"
+Repository = "https://github.com/anomatomato/manhattan-silhouette"
+
+[dependency-groups]
+dev = [
+  { include-group = "lint" },
+  { include-group = "notebook" },
+  { include-group = "test" },
+]
+lint = [
+  "pre-commit>=4.5.1",
+  "pyrefly>=1.0.0",
+]
+notebook = [
+  "ipykernel>=7.1.0",
+]
+test = [
+  "hypothesis>=6.152.4",
+  "pytest>=9.0.3",
+  "scikit-learn>=1.8.0",
+]
+
+benchmark = [
+  "algbench>=2.4.1",
+  "matplotlib>=3.10.8",
+  "numpydantic>=1.8.1",
+  "papermill>=2.7.0",
+  "scikit-learn>=1.8.0",
+  "seaborn>=0.13.2",
+  "slurminade>=1.1.2",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.6,<0.12"]
+build-backend = "uv_build"
+
+[tool.pyrefly]
+project-includes = ["."]
+search-path = ["src", "tests"]
+
+[tool.pytest]
+testpaths = ["tests"]
