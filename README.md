@@ -3,7 +3,7 @@
 Fast exact silhouette evaluation under
 [Manhattan distance](https://en.wikipedia.org/wiki/Taxicab_geometry).
 
-![Runtime comparison on million-point benchmark instances](evaluation/runtime_manhattan_silhouette/PUBLIC_DATA/figures/rq1_runtime_vs_n.png)
+![Runtime comparison on million-point benchmark instances](https://raw.githubusercontent.com/anomatomato/manhattan-silhouette/main/evaluation/runtime_manhattan_silhouette/PUBLIC_DATA/figures/rq1_runtime_vs_n.png)
 
 _Figure 1: Runtime comparison between a generic pairwise-distance baseline and
 Manhattan-specific implementations on synthetic benchmark instances._
