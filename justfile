@@ -21,7 +21,7 @@ setup: install pre_commit_setup
 
 # Run pytest
 test:
-    uv run pytest src
+    uv run pytest
 
 # Update everything relevant
 update-all: update-pre-commit update-python
