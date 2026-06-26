@@ -1,4 +1,4 @@
-# Manhattan Silhouette
+# Fast Manhattan Silhouette
 
 Fast exact silhouette evaluation under
 [Manhattan distance](https://en.wikipedia.org/wiki/Taxicab_geometry).
@@ -11,7 +11,7 @@ Manhattan-specific implementations on synthetic benchmark instances._
 ## Overview
 
 Evaluating clustering quality is a common task in cluster analysis. The
-[silhouette coefficient](<https://en.wikipedia.org/wiki/Silhouette_(clustering)>)
+[silhouette width](<https://en.wikipedia.org/wiki/Silhouette_(clustering)>)
 compares, for each data point, the average distance to points in its own cluster
 with the average distance to points in the nearest other cluster. The mean over
 all samples is often called the Average Silhouette Width (ASW).
@@ -22,16 +22,22 @@ because the full distance matrix has quadratic size.
 
 `manhattan-silhouette` computes exact silhouette values for fixed cluster labels
 under Manhattan (L1) distance without materializing the full `n × n` distance
-matrix. It uses the additive structure of the Manhattan distance and
-Numba-compiled kernels to make repeated scoring and large synthetic benchmarks
+matrix. It uses the additive structure of the Manhattan distance to make repeated scoring and large synthetic benchmarks
 practical.
 
 The package answers the question:
 
-> Given data points and cluster labels, what are the exact silhouette values
-> under Manhattan distance?
+> Given data points and cluster labels, how can we compute the silhouette widths
+> under Manhattan distance in **subquadratic time**?
 
-It does **not** compute cluster labels itself.
+
+
+| Standard Silhouette                | Fast Manhattan Silhouette                            |
+| ---------------------------------- | ---------------------------------------------------- |
+| - Compute pairwise distances       | - Uses sorted one-dimensional sweeps                 |
+| - **Time**: $\mathcal{O}(n^{2}d)$  | - **Time**: $\mathcal{O}(nd(\log n+k))$              |
+| - **Memory**: $\mathcal{O}(n^{2})$ | - **Memory**: $\mathcal{O}(nk)$ or $\mathcal{O}(nd)$ |
+
 
 ## Installation
 
@@ -122,11 +128,11 @@ instances. The benchmark compares:
 
 - `fast_by_cluster_score`: the default cluster-oriented implementation
 - `fast_by_axis_score`: an axis-oriented implementation
-- `sklearn_manhattan`: a generic scikit-learn-style Manhattan silhouette
+- `sklearn_manhattan`: a generic scikit-learn Manhattan silhouette
   baseline
 
 On million-point instances with five clusters, the cluster-oriented
-implementation was several thousand times faster than the generic baseline:
+implementation was several thousand times faster than the sklearn baseline:
 
 | Dimensions | Standard baseline (s) | `fast_by_cluster_score` (s) | Speedup |
 | ---------: | --------------------: | --------------------------: | ------: |
