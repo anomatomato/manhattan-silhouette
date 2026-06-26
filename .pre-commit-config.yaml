@@ -29,7 +29,7 @@ repos:
         exclude: "^tests"
 
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.11.16
+    rev: 0.11.24
     hooks:
       # Update the uv lockfile
       - id: uv-lock
@@ -51,7 +51,7 @@ repos:
         additional_dependencies: [black==26.*]
 
   - repo: https://github.com/rbubley/mirrors-prettier
-    rev: "v3.8.3"
+    rev: "v3.8.4"
     hooks:
       - id: prettier
         types_or: [yaml, markdown, html, css, scss, javascript, json]
@@ -59,7 +59,7 @@ repos:
         exclude: "^tests"
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.14
+    rev: v0.15.20
     hooks:
       # Run the linter
       - id: ruff-check
@@ -69,7 +69,7 @@ repos:
         args: []
 
   - repo: https://github.com/facebook/pyrefly-pre-commit
-    rev: 1.0.0 # Note: this is the version of the pre-commit hook, NOT the pyrefly version used for type checking
+    rev: 1.1.1 # Note: this is the version of the pre-commit hook, NOT the pyrefly version used for type checking
     hooks:
       - id: pyrefly-check
         name: Pyrefly (type checking)
