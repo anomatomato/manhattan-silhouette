@@ -1,0 +1,97 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        run: uv python install 3.14
+
+      - name: Sync dependencies
+        run: uv sync --group test
+
+      - name: Check tag matches package version
+        run: |
+          VERSION=$(python3 - <<'PY'
+          import tomllib
+          with open("pyproject.toml", "rb") as f:
+              print(tomllib.load(f)["project"]["version"])
+          PY
+          )
+          test "v$VERSION" = "${GITHUB_REF_NAME}"
+
+      - name: Run tests
+        run: uv run python -m pytest
+
+      - name: Build package
+        run: uv build
+
+      - name: Check package metadata
+        run: uvx twine check --strict dist/*
+
+      - name: Upload dist artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/*
+
+  # see https://github.com/pypa/gh-action-pypi-publish
+  publish-testpypi:
+    name: Upload release to TestPyPI
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write # IMPORTANT: this permission is mandatory for trusted publishing
+
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/manhattan-silhouette
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          # Name of the artifact to download.
+          name: dist
+          # Destination path
+          path: dist
+
+      - name: Publish to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          #
+  # see https://github.com/pypa/gh-action-pypi-publish
+  publish-pypi:
+    name: Upload release to PyPI
+    needs: publish-testpypi
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write # IMPORTANT: this permission is mandatory for trusted publishing
+
+    environment:
+      name: pypi
+      url: https://pypi.org/p/manhattan-silhouette
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          # Name of the artifact to download.
+          name: dist
+          # Destination path
+          path: dist
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
