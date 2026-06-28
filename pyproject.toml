@@ -99,8 +99,10 @@ allow_shell_hooks = false
 
 [[tool.bumpversion.files]]
 filename = "uv.lock"
-search = 'name = "manhattan-silhouette"\nversion = "{current_version}"'
-replace = 'name = "manhattan-silhouette"\nversion = "{new_version}"'
+search = """name = "manhattan-silhouette"
+version = "{current_version}""""
+replace = """name = "manhattan-silhouette"
+version = "{new_version}""""
 
 [tool.pyrefly]
 project-includes = ["."]
