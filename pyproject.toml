@@ -1,6 +1,6 @@
 [project]
 name = "manhattan-silhouette"
-version = "0.1.0"
+version = "0.1.1"
 description = "A faster algorithm to compute the Silhouette width under Manhattan distance"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -75,7 +75,7 @@ requires = ["uv_build>=0.11.19,<0.12"]
 build-backend = "uv_build"
 
 [tool.bumpversion]
-current_version = "0.1.0"
+current_version = "0.1.1"
 parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
 serialize = ["{major}.{minor}.{patch}"]
 search = "{current_version}"
