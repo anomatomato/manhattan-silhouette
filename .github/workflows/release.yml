@@ -41,7 +41,7 @@ jobs:
         run: uvx twine check --strict dist/*
 
       - name: Upload dist artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist/*
@@ -60,7 +60,7 @@ jobs:
       url: https://test.pypi.org/p/manhattan-silhouette
 
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           # Name of the artifact to download.
           name: dist
@@ -86,7 +86,7 @@ jobs:
       url: https://pypi.org/p/manhattan-silhouette
 
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           # Name of the artifact to download.
           name: dist
